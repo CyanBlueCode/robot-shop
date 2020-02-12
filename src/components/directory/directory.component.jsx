@@ -10,29 +10,34 @@ class Directory extends Component {
         {
           title: 'BIRTHDAYS',
           imgUrl: 'https://picsum.photos/640.jpg',
-          id: 1
+          id: 1,
+          linkUrl: 'birthdays'
         },
         {
           title: 'HOLIDAYS',
           imgUrl: 'https://picsum.photos/641.jpg',
-          id: 2
+          id: 2,
+          linkUrl: 'holidays'
         },
         {
           title: 'ANNIVERSARIES',
           imgUrl: 'https://picsum.photos/642.jpg',
-          id: 3
+          id: 3,
+          linkUrl: 'anniversaries'
         },
         {
           title: 'BUSINESS',
           imgUrl: 'https://picsum.photos/643.jpg',
           id: 4,
-          size: 'large'
+          size: 'large',
+          linkUrl: 'business'
         },
         {
           title: 'FOR KIDS',
           imgUrl: 'https://picsum.photos/644.jpg',
           id: 5,
-          size: 'large'
+          size: 'large',
+          linkUrl: 'kids'
         }
       ]
     };
@@ -40,8 +45,9 @@ class Directory extends Component {
   render() {
     return (
       <div className="directory-menu">
-        {this.state.sections.map(({ title, imgUrl, id, size }) => (
-          <MenuItem key={id} title={title} imgUrl={imgUrl} size={size} />
+        {/* because names of props passed down are same as obj properties, instead of doing individually { title, imgUrl, id, size }, we can just destructure with rest operator */}
+        {this.state.sections.map(({ id, ...otherProps }) => (
+          <MenuItem key={id} {...otherProps} />
         ))}
       </div>
     );
